@@ -26,6 +26,8 @@ var confess = {
             return;
         }
         this.config = this.mergeConfig(cliConfig, cliConfig.configFile);
+        // add cookies if defined: very useful for session parsing
+        this.addCookies(this.config);
         var task = this[this.config.task];
         this.load(this.config, task, this);
     },
@@ -468,6 +470,34 @@ var confess = {
         }
         return str;
     },
+
+    addCookies: function(config){
+
+    var cookiesJsonPath = config.cookiesjson;
+    
+    try{
+
+        if(cookiesJsonPath===undefined || !cookiesJsonPath)
+            return;
+
+        // Load cookies stored in cookies.json file
+        // JSON file generate with EditThisCookie plugin
+        // http://www.editthiscookie.com/
+
+        var cookiesJson = require(cookiesJsonPath);
+        for(var i = 0; i< cookiesJson.length; i++) {
+
+            var cookie = cookiesJson[i];
+
+            if(!phantom.addCookie(cookie)){
+                console.log("addCookie Failure for: " + JSON.stringify(cookie));
+            };
+        }
+    }   
+    catch(ex){
+        console.log("addCookie failed | Cookie JSON Path: " + cookiesJsonPath);
+    }
+}
 
 }
 
