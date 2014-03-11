@@ -9,6 +9,7 @@
   "wait": 0,
   "consolePrefix": "#",
   "verbose": true,
+  "cookiesjson": "",
   "appcache": {
     "urlsFromDocument": true,
     "urlsFromRequests": false,
