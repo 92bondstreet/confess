@@ -164,6 +164,7 @@ The following is the default <code>config.json</code> file for confess.js, but y
         "wait": 0,
         "consolePrefix": "#",
         "verbose": true,
+        "cookiesjson": "",
         "appcache": {
             "urlsFromDocument": true,
             "urlsFromRequests": false,
@@ -185,6 +186,8 @@ These properties are used as follows:
  * <code>consolePrefix</code> - if set, confess.js will output the *browser's* console to the standard output. Useful for detecting if there are also any issues with the app's execution itself.
 
  * <code>verbose</code> - whether to add extra output about the generator's configuration into the output. Set to true for the <code>performance</code> task in order to see the waterfall chart.
+
+  * <code>cookiesjson</code> - path of cookies file in JSON format. File could be generate with following plugin: EditThisCookie plugin [http://www.editthiscookie.com](http://www.editthiscookie.com)
 
  * <code>appcache.urlsFromDocument</code> - whether to traverse the DOM and CSSOM looking for resources; the default behaviour
 
